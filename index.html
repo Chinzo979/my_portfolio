@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Chinmay Purushottam</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+        <div class="section__pic-container flip-card">
+            <div class="flip-card-inner">
+              <!-- front face: your current profile pic -->
+              <div class="flip-card-front">
+                <img src="./assets/profile-pic.png" alt="Chinmay Purushottam profile picture" />
+              </div>
+              <!-- back face: fun fact or quote -->
+              <div class="flip-card-back">
+                <p>“Fun fact: I can solve a Rubik’s cube in under 30 seconds!”</p>
+              </div>
+            </div>
+          </div>
+          
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Chinmay Purushottam</h1>
+        <p class="section__text__p2">An aspiring software engineer interested in AI/ML and full-stack product development. When I'm not writing code, you'll find me playing any racket sport, endlessly scrolling through interior design pages, vibing to house and Hindi Indie music, and binging animes.</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/resume-example.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+            <div class="social-icons">
+                <a href="https://github.com/Chinzo979" class="fa fa-github"       aria-label="GitHub"></a>
+                <a href="https://www.linkedin.com/in/chinmay-purushottam/" class="fa fa-linkedin" aria-label="LinkedIn"></a>
+                <a href="mailto:chinmay2321@gamil.com" class="fa fa-envelope"                aria-label="Email"></a>
+                <a href="https://instagram.com/your-username" class="fa fa-instagram"  aria-label="Instagram"></a>
+                <a href="https://open.spotify.com/user/8lmcsig30eiaht67ptuijrwo4?si=f04c289fa6ac4f9b" class="fa fa-spotify" aria-label="Spotify"></a>
+              </div>
+        </div>
+      </div>
+      <img
+      src="./assets/arrow.png"
+      alt="Scroll down"
+      class="icon arrow"
+      onclick="location.href='./#projects'"
+        />
+    </section>
+    <section id="projects">
+        <div id="wind-container"></div>
+        <div id="leaf-container"></div>
+      <span class="typewriter"><p class="section__text__p1">Browse My Recent</p></span>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="project-item">
+              <img
+                src="./assets/project-1.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Machine Learning & Vision</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='project.html?id=computer-vision'"
+              >
+                Learn More...
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="project-item">
+              <img
+                src="./assets/project-2.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Anime Recommender System</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='project.html?id=anime-recommender'"
+              >
+                Learn More...
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="project-item">
+              <img
+                src="./assets/project-3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Search Engine</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='project.html?id=search-engine'"
+              >
+                Learn More...
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+        <div class="creative-switch-container">
+            <label class="switch">
+              <input type="checkbox" id="creativeToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="switch-label">Get Creative</span>
+          </div>
+    </footer>
+    <canvas id="cw"></canvas>
+    <canvas id="paintCanvas"></canvas>
+    <script src="script.js"></script>
+  </body>
+</html>

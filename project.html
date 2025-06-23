@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <!-- Main Navigation: Project Name + All Projects Link -->
+  <nav class="nav-links">
+    <h1 id="project-title"></h1>
+    <a href="index.html#projects">All Projects</a>
+  </nav>
+
+  <main class="project-detail">
+    <!-- 1) Sidebar nav -->
+    <aside class="sidebar">
+      <a href="index.html">
+        <img src="assets/home.png" alt="Home" class="home-icon" />
+      </a>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#future">Future Work</a></li>
+      </ul>
+      <div class="theme-picker">
+        <img id="theme-green" src="assets/green.png" alt="Green Theme" />
+        <img id="theme-autumn" src="assets/autumn.png" alt="Autumn Theme" />
+        <img id="theme-snow" src="assets/snowflake.png" alt="Winter Theme" />
+      </div>
+    </aside>
+
+    <!-- 2) Main content (injected dynamically) -->
+    <article class="content" id="content">
+      <p>Loading…</p>
+    </article>
+  </main>
+
+  <script src="project.js"></script>
+</body>
+</html>
