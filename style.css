@@ -3,302 +3,306 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 p {
-  color: rgb(85, 85, 85);
+    color: rgb(85, 85, 85);
 }
 
 /* TRANSITION */
 
 a,
 .btn {
-  transition: all 300ms ease;
+    transition: all 300ms ease;
 }
 
 /* DESKTOP NAV */
 
 nav,
 .nav-links {
-  display: flex;
+    display: flex;
 }
 
 nav {
-  justify-content: space-around;
-  align-items: center;
-  height: 17vh;
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh;
 }
 
 .nav-links {
-  gap: 2rem;
-  list-style: none;
-  font-size: 1.5rem;
+    gap: 2rem;
+    list-style: none;
+    font-size: 1.5rem;
 }
 
 a {
-  color: black;
-  text-decoration: none;
-  text-decoration-color: white;
+    color: black;
+    text-decoration: none;
+    text-decoration-color: white;
 }
 
 a:hover {
-  color: grey;
-  text-decoration: underline;
-  text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
+    color: grey;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(181, 181, 181);
 }
 
 .logo {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 .logo:hover {
-  cursor: default;
+    cursor: default;
 }
 
 /* HAMBURGER MENU */
 
 #hamburger-nav {
-  display: none;
+    display: none;
 }
 
 .hamburger-menu {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .hamburger-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 24px;
-  width: 30px;
-  cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
 }
 
 .hamburger-icon span {
-  width: 100%;
-  height: 2px;
-  background-color: black;
-  transition: all 0.3 ease-in-out;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transition: all 0.3 ease-in-out;
 }
 
 .menu-links {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  width: fit-content;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3 ease-in-out;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3 ease-in-out;
 }
 
 .menu-links a {
-  display: block;
-  padding: 10px;
-  text-align: center;
-  font-size: 1.5rem;
-  color: black;
-  text-decoration: none;
-  transition: all 0.3 ease-in-out;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3 ease-in-out;
 }
 
 .menu-links li {
-  list-style: none;
+    list-style: none;
 }
 
 .menu-links.open {
-  max-height: 300px;
+    max-height: 300px;
 }
 
 .hamburger-icon.open span:first-child {
-  transform: rotate(45deg) translate(10px, 5px);
+    transform: rotate(45deg) translate(10px, 5px);
 }
 
 .hamburger-icon.open span:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 
 .hamburger-icon.open span:last-child {
-  transform: rotate(-45deg) translate(10px, -5px);
+    transform: rotate(-45deg) translate(10px, -5px);
 }
 
 .hamburger-icon span:first-child {
-  transform: none;
+    transform: none;
 }
 
 .hamburger-icon span:first-child {
-  opacity: 1;
+    opacity: 1;
 }
 
 .hamburger-icon span:first-child {
-  transform: none;
+    transform: none;
 }
 
 /* SECTIONS */
 
 section {
-  padding-top: 4vh;
-  height: 96vh;
-  margin: 0 10rem;
-  box-sizing: border-box;
-  min-height: fit-content;
+    padding-top: 4vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
 }
 
 .section-container {
-  display: flex;
+    display: flex;
 }
 
 /* PROFILE SECTION */
 
 #profile {
-  display: flex;
-  justify-content: center;
-  gap: 5rem;
-  height: 80vh;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    height: 80vh;
 }
 
 .section__pic-container {
-  display: flex;
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin: auto 0;
 }
 
 .section__text {
-  align-self: center;
-  text-align: center;
-  width: 650px;         /* lock it to 400px wide */
-  max-width: 100%;      /* but shrink on narrow screens */
-  box-sizing: border-box;
+    align-self: center;
+    text-align: center;
+    width: 650px;
+    /* lock it to 400px wide */
+    max-width: 100%;
+    /* but shrink on narrow screens */
+    box-sizing: border-box;
 }
 
 .section__text p {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .section__text__p1 {
-  text-align: center;
+    text-align: center;
 }
 
 .section__text__p2 {
-  font-size: 1.15rem;
-  margin-bottom: 1rem;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
 
-  /* now it wraps at 400px */
-  /* you can also do max-width instead of width if preferred */
-  width: 100%;          
-  /* if you want to lock height and scroll: */
-  /* max-height: 150px;  
+    /* now it wraps at 400px */
+    /* you can also do max-width instead of width if preferred */
+    width: 100%;
+    /* if you want to lock height and scroll: */
+    /* max-height: 150px;  
      overflow-y: auto; */
 }
 
 .title {
-  font-size: 3rem;
-  text-align: center;
+    font-size: 3rem;
+    text-align: center;
 }
 
 #socials-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
 }
 
 /* ARROW */
 #profile {
     position: relative;
-    padding-bottom: 3rem; /* give some breathing room */
-  }
-  
-  /* bottom-center the arrow */
-  #profile .arrow {
+    padding-bottom: 3rem;
+    /* give some breathing room */
+}
+
+/* bottom-center the arrow */
+#profile .arrow {
     position: absolute;
-    bottom: 2.5rem;         /* adjust vertical spacing as needed */
+    bottom: 2.5rem;
+    /* adjust vertical spacing as needed */
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
     transform-origin: center center;
     transition: transform 0.5s ease;
-  }
-  
-  #profile .arrow:hover {
+}
+
+#profile .arrow:hover {
     transform: translateX(-50%) scale(1.5);
-  }
-  
+}
+
 
 
 /* ICONS */
 
 .icon {
-  cursor: pointer;
-  height: 2rem;
+    cursor: pointer;
+    height: 2rem;
 }
 
 /* BUTTONS */
 
 .btn-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .btn {
-  font-weight: 600;
-  transition: all 300ms ease;
-  padding: 1rem;
-  width: 9rem;
-  border-radius: 2rem;
+    font-weight: 600;
+    transition: all 300ms ease;
+    padding: 1rem;
+    width: 9rem;
+    border-radius: 2rem;
 }
 
 .btn-color-1,
 .btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+    border: rgb(53, 53, 53) 0.1rem solid;
 }
 
 .btn-color-1:hover,
 .btn-color-2:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
-  color: white;
+    background: rgb(53, 53, 53);
+    color: white;
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
 }
 
 .btn-color-2 {
-  background: none;
-  background: none;
-  color: black;
-  border: 0.1rem solid rgb(53, 53, 53);
+    background: none;
+    background: none;
+    color: black;
+    border: 0.1rem solid rgb(53, 53, 53);
 
-  /* make room for the pseudo-element */
-  position: relative;
-  overflow: hidden;
+    /* make room for the pseudo-element */
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-color-2:hover {
-  border: rgb(255, 255, 255) 0.1rem solid;
+    border: rgb(255, 255, 255) 0.1rem solid;
 }
 
 .btn-container {
-  gap: 1rem;
+    gap: 1rem;
 }
 
 .btn-color-2::after {
@@ -308,71 +312,71 @@ section {
     left: -75%;
     width: 50%;
     height: 100%;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     transform: skewX(-20deg);
     transition: left 0.7s ease;
-  
+
     /* ← add this: don’t let the shine block clicks */
     pointer-events: none;
-  }
-  
+}
+
 
 /* CHANGE ON HOVER */
 
 /* Unified button hover color */
 .btn-color-1:hover,
 .btn-color-2:hover {
-  background-color: #9fbe8f;
-  color: #ffffff;
-  border-color: #9fbe8f;
+    background-color: #9fbe8f;
+    color: #ffffff;
+    border-color: #9fbe8f;
 }
 
 
 /* ABOUT SECTION */
 
 #about {
-  position: relative;
+    position: relative;
 }
 
 .about-containers {
-  gap: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .about-details-container {
-  justify-content: center;
-  flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .about-containers,
 .about-details-container {
-  display: flex;
+    display: flex;
 }
 
 .about-pic {
-  border-radius: 2rem;
+    border-radius: 2rem;
 }
 
 .details-container {
-  padding: 1.5rem;
-  flex: 1;
-  background: white;
-  border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  text-align: center;
+    padding: 1.5rem;
+    flex: 1;
+    background: white;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(163, 163, 163);
+    text-align: center;
 }
 
 .section-container {
-  gap: 4rem;
-  height: 80%;
+    gap: 4rem;
+    height: 80%;
 }
 
 .section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
+    height: 400px;
+    width: 400px;
+    margin: auto 0;
 }
 
 /* PROJECTS SECTION */
@@ -380,215 +384,227 @@ section {
 #projects {
     margin: 0;
     padding: 0;
-  }
+}
 
 .color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+    border-color: rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
 }
 
 .project-item {
-    width: 400px;         /* choose your uniform width */
-    height: 450px;        /* choose your uniform height */
-    overflow: hidden;     /* hide the parts that spill out */
-    border-radius: 2rem;  /* keep your rounded corners */
-  }
-  
-  /* 2. Make the image fill the wrapper and crop to fit */
-  .project-item .project-img {
+    width: 400px;
+    /* choose your uniform width */
+    height: 450px;
+    /* choose your uniform height */
+    overflow: hidden;
+    /* hide the parts that spill out */
+    border-radius: 2rem;
+    /* keep your rounded corners */
+}
+
+/* 2. Make the image fill the wrapper and crop to fit */
+.project-item .project-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;    /* fills the box, cropping as needed */
+    object-fit: cover;
+    /* fills the box, cropping as needed */
     display: block;
-  }
-  
+}
+
 
 .project-title {
-  margin: 1rem;
-  color: black;
+    margin: 1rem;
+    color: black;
 }
 
 .project-btn {
     z-index: 3;
     position: relative;
-    font-weight: 500;         
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;  
-  }
+    letter-spacing: 0.05em;
+}
 
-  
-  /* Centered, fixed-width 3-column layout */
-  #projects .about-containers {
+
+/* Centered, fixed-width 3-column layout */
+#projects .about-containers {
     display: grid;
-    grid-template-columns: repeat(3, 450px);  /* three cards @ 450px each */
-    justify-content: center;                  /* center the whole grid */
-    gap: 2rem;                                 /* equal space between cards */
-  }
-  
-  /* force each card to the same size */
-  #projects .details-container {
-    flex: 0 0 450px; 
-  }
+    grid-template-columns: repeat(3, 450px);
+    /* three cards @ 450px each */
+    justify-content: center;
+    /* center the whole grid */
+    gap: 2rem;
+    /* equal space between cards */
+}
+
+/* force each card to the same size */
+#projects .details-container {
+    flex: 0 0 450px;
+}
 
 /* FOOTER SECTION */
 
 footer {
-  height: 26vh;
-  margin: 0 1rem;
+    height: 26vh;
+    margin: 0 1rem;
 }
 
 footer p {
-  text-align: center;
+    text-align: center;
 }
 
 .section__pic-container {
     display: inline-block;
-    width: 400px;  
-    height: 400px;  
-  }
-  
-  .section__pic-container img {
+    width: 400px;
+    height: 400px;
+}
+
+.section__pic-container img {
     display: block;
-    width: 100%;   
-    height: 100%;   
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 50%;
     transition: box-shadow 0.3s ease;
-    box-shadow: 0 0 0 0 rgba(159,190,143,0);
-  }
-  
-  .section__pic-container:hover img {
-    box-shadow:
-      0 0 0 4px #9fbe8f,
-      0 0 15px 8px rgba(159, 190, 143, 0.6),
-      0 0 30px 16px rgba(159, 190, 143, 0.4),
-      0 0 60px 32px rgba(159, 190, 143, 0.2);
-  }
+    box-shadow: 0 0 0 0 rgba(159, 190, 143, 0);
+}
 
-  /* NAV LINK HOVER EFFECT */
+.section__pic-container:hover img {
+    box-shadow:
+        0 0 0 4px #9fbe8f,
+        0 0 15px 8px rgba(159, 190, 143, 0.6),
+        0 0 30px 16px rgba(159, 190, 143, 0.4),
+        0 0 60px 32px rgba(159, 190, 143, 0.2);
+}
+
+/* NAV LINK HOVER EFFECT */
 .nav-links a {
     position: relative;
-    color: inherit;             
-    text-decoration: none;       
-    transition: color 0.4s ease-in-out; 
-  }
-  
-  .nav-links a:hover {
-    color: #85ac70;       
-  }
-  
-  /* Pseudo-elements for the two underlines */
-  .nav-links a::before,
-  .nav-links a::after {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #85ac70;
+}
+
+/* Pseudo-elements for the two underlines */
+.nav-links a::before,
+.nav-links a::after {
     content: '';
     position: absolute;
     height: 2px;
-    width: 0;                    
+    width: 0;
     background: #85ac70;
-    transition: width 0.4s ease; 
-  }
-  
+    transition: width 0.4s ease;
+}
 
-  .nav-links a::before {
-    bottom: -4px; 
+
+.nav-links a::before {
+    bottom: -4px;
     left: 0;
-  }
-  
+}
 
-  .nav-links a::after {
+
+.nav-links a::after {
     bottom: -8px;
     right: 0;
-  }
-  
-  .nav-links a:hover::before,
-  .nav-links a:hover::after {
-    width: 100%;
-  }
-  
+}
 
-  /* ─── Flip Card 3D ─── */
+.nav-links a:hover::before,
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* ─── Flip Card 3D ─── */
 .flip-card {
     perspective: 1000px;
-  }
-  .flip-card-inner {
+}
+
+.flip-card-inner {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     box-sizing: border-box;
     transform-style: preserve-3d;
     transition:
-      transform 0.8s ease-out,
-      box-shadow 0.5s ease,
-      border 0.5s ease;
-  }  
-  .flip-card.flipped .flip-card-inner {
+        transform 0.8s ease-out,
+        box-shadow 0.5s ease,
+        border 0.5s ease;
+}
+
+.flip-card.flipped .flip-card-inner {
     transform: rotateX(180deg);
-  }
-  
-  /* Both faces share the same size and circular shape */
-  .flip-card-front,
-  .flip-card-back {
+}
+
+/* Both faces share the same size and circular shape */
+.flip-card-front,
+.flip-card-back {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 50%;
     overflow: hidden;
-  }
-  
-  /* Front: your profile image */
-  .flip-card-front img {
+}
+
+/* Front: your profile image */
+.flip-card-front img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-  
-  /* Back: green background + centered white text */
-  .flip-card-back {
+}
+
+/* Back: green background + centered white text */
+.flip-card-back {
     background-color: #9fbe8f;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: rotateX(180deg);
-  }
-  .flip-card-back p {
+}
+
+.flip-card-back p {
     color: #fff;
     font-size: 1.2rem;
     text-align: center;
     padding: 1rem;
-  }
+}
 
-  /* preserve circle and glow on hover or flipped state */
+/* preserve circle and glow on hover or flipped state */
 .flip-card-inner {
     border-radius: 100%;
     /* ensure border doesn’t alter overall size */
     box-sizing: border-box;
-  }
-  
+}
+
 /* hover-only glow & border on the circular card */
 .flip-card:hover .flip-card-inner {
     border: 4px solid #9fbe8f;
     box-shadow:
-      /* inner glow */
-      0 0 15px 8px rgba(159,190,143,0.6),
-      /* mid glow */
-      0 0 30px 16px rgba(159,190,143,0.4),
-      /* outer glow */
-      0 0 60px 32px rgba(159,190,143,0.2);
-  }
-  
-  
-  /* optional: keep pointer cursor over entire flip-card */
-  .flip-card {
+        /* inner glow */
+        0 0 15px 8px rgba(159, 190, 143, 0.6),
+        /* mid glow */
+        0 0 30px 16px rgba(159, 190, 143, 0.4),
+        /* outer glow */
+        0 0 60px 32px rgba(159, 190, 143, 0.2);
+}
+
+
+/* optional: keep pointer cursor over entire flip-card */
+.flip-card {
     cursor: pointer;
-  }
+}
 
 
 #profile .section__pic-container,
 #profile .section__text {
-  transform: translate(-5rem, -3rem);
+    transform: translate(-5rem, -3rem);
 }
 
 /* MORE ON SOCIALS */
@@ -596,34 +612,40 @@ footer p {
 /* container flex if you like them in a row */
 .social-icons {
     display: flex;
-    justify-content: center; /* or flex-start / flex-end */
+    justify-content: center;
+    /* or flex-start / flex-end */
     gap: 0rem;
     margin-top: 0.25rem;
-  }
-  
-  /* base icon style */
-  .social-icons .fa {
+}
+
+/* base icon style */
+.social-icons .fa {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3.5rem;            /* circle diameter */
+    width: 3.5rem;
+    /* circle diameter */
     height: 3.5rem;
-    font-size: 1.25rem;       /* icon size */
-    color: black;             /* icon color */
-    background: none;         /* no background color */
-    border-radius: 50%;       /* circle shape (optional if no bg) */
+    font-size: 1.25rem;
+    /* icon size */
+    color: black;
+    /* icon color */
+    background: none;
+    /* no background color */
+    border-radius: 50%;
+    /* circle shape (optional if no bg) */
     transition: transform 0.3s ease, color 0.3s ease;
     text-decoration: none;
-  }
-  
-  /* hover state */
-  .social-icons .fa:hover {
-    color: #9fbe8f;        
-    transform: scale(1.5);  
-  }
-  
+}
 
-  /* EXPERIMENTS */
+/* hover state */
+.social-icons .fa:hover {
+    color: #9fbe8f;
+    transform: scale(1.5);
+}
+
+
+/* EXPERIMENTS */
 
 /* ——— toggle styling ——— */
 .creative-switch-container {
@@ -635,27 +657,34 @@ footer p {
     gap: 0.5rem;
     z-index: 1000;
     user-select: none;
-  }
-  .creative-switch-container .switch {
+}
+
+.creative-switch-container .switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
-  }
-  .creative-switch-container .switch input {
+}
+
+.creative-switch-container .switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  .creative-switch-container .slider {
+}
+
+.creative-switch-container .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #ccc;
     transition: background-color 0.4s;
     border-radius: 34px;
-  }
-  .creative-switch-container .slider:before {
+}
+
+.creative-switch-container .slider:before {
     position: absolute;
     content: "";
     height: 20px;
@@ -665,149 +694,186 @@ footer p {
     background-color: white;
     transition: transform 0.4s;
     border-radius: 50%;
-  }
-  .creative-switch-container .switch input:checked + .slider {
+}
+
+.creative-switch-container .switch input:checked + .slider {
     background-color: #9fbe8f;
-  }
-  .creative-switch-container .switch input:checked + .slider:before {
+}
+
+.creative-switch-container .switch input:checked + .slider:before {
     transform: translateX(26px);
-  }
-  .creative-switch-container .switch-label {
+}
+
+.creative-switch-container .switch-label {
     font-size: 1rem;
     color: #333;
     cursor: pointer;
-  }
-  
-  /* ——— particle canvas ——— */
-  #cw {
+}
+
+/* ——— particle canvas ——— */
+#cw {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
     z-index: 50;
-    display: none;      /* only when enabled */
+    display: none;
+    /* only when enabled */
     background: transparent;
-  }
-  
-  #cw,
+}
+
+#cw,
 #paintCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  display: none;      /* only when enabled */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    display: none;
+    /* only when enabled */
 }
 
 #cw {
-  z-index: 50;
-  background: transparent;
+    z-index: 50;
+    background: transparent;
 }
 
 #paintCanvas {
-  z-index: 49;
+    z-index: 49;
 }
 
 /* give the row a perspective for 3D transforms */
 /* give Projects row perspective for 3D */
 #projects .about-containers {
     perspective: 1000px;
-  }
-  
-  /* baseline card state */
-  .details-container {
-    position: relative;          /* allows z-index to take effect */
+}
+
+/* baseline card state */
+.details-container {
+    position: relative;
+    /* allows z-index to take effect */
     transform-style: preserve-3d;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     z-index: 1;
-  }
-  
-  /* hover: lift, tilt, glow */
-  .details-container:hover {
-    z-index: 2;                  /* bring card above its neighbors */
+}
+
+/* hover: lift, tilt, glow */
+.details-container:hover {
+    z-index: 2;
+    /* bring card above its neighbors */
     transform: translateY(-10px) rotateX(5deg) scale(1.03);
     transform-origin: center bottom;
     box-shadow:
-      0 8px 16px rgba(0, 0, 0, 0.1),
-      0 0 10px 3px rgba(159, 190, 143, 0.6),
-      0 0 20px 6px rgba(159, 190, 143, 0.4),
-      0 0 40px 12px rgba(159, 190, 143, 0.2);
-  }
-  
-  /* LEAVES */
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 0 10px 3px rgba(159, 190, 143, 0.6),
+        0 0 20px 6px rgba(159, 190, 143, 0.4),
+        0 0 40px 12px rgba(159, 190, 143, 0.2);
+}
 
-  #projects {
-    position: relative;    /* stacking context for leaves */
-    overflow: hidden;      /* clip at section edges */
-  }
-  
-  #leaf-container {
+/* LEAVES */
+
+#projects {
+    position: relative;
+    /* stacking context for leaves */
+    overflow: hidden;
+    /* clip at section edges */
+}
+
+#leaf-container {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: 0;            /* behind cards (which are z-index:1+) */
-  }
-  
-  /* ——— each leaf uses your PNG ——— */
-  .leaf {
+    z-index: 0;
+    /* behind cards (which are z-index:1+) */
+}
+
+/* ——— each leaf uses your PNG ——— */
+.leaf {
     position: absolute;
-    left: -50px;                      /* start offscreen left */
-    top: var(--leaf-start-top);       /* custom vertical start */
-    width: 40px;                      /* adjust to taste */
+    left: -50px;
+    /* start offscreen left */
+    top: var(--leaf-start-top);
+    /* custom vertical start */
+    width: 40px;
+    /* adjust to taste */
     pointer-events: none;
     opacity: 0.9;
     transform: rotate(var(--leaf-rotate-start));
     animation: blow var(--leaf-duration) linear forwards;
-  }
-  
-  /* ——— drift from left → right ——— */
-  @keyframes blow {
+}
+
+/* ——— drift from left → right ——— */
+@keyframes blow {
     to {
-      left: calc(100% + 50px);       /* end offscreen right */
-      transform: rotate(var(--leaf-rotate-end));
+        left: calc(100% + 50px);
+        /* end offscreen right */
+        transform: rotate(var(--leaf-rotate-end));
     }
-  }
+}
 
 
-  /* wind streaks sit over leaves but under cards */
+/* wind streaks sit over leaves but under cards */
 #wind-container {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: 1;  /* but above #leaf-container (also z-index:0) if you order HTML appropriately */
-  }
-  
-  /* a single gust: a thin blurred line */
-  .wind-gust {
+    z-index: 1;
+    /* but above #leaf-container (also z-index:0) if you order HTML appropriately */
+}
+
+/* a single gust: a thin blurred line */
+.wind-gust {
     position: absolute;
-    top: var(--gust-start-top);   /* randomized in JS */
-    left: -200px;                  /* start off-screen left */
-    width: 200px;                  /* length of streak */
+    top: var(--gust-start-top);
+    /* randomized in JS */
+    left: -200px;
+    /* start off-screen left */
+    width: 200px;
+    /* length of streak */
     height: 2px;
     background: rgba(108, 75, 31, 0.3);
     filter: blur(1px);
     animation: gust-move var(--gust-duration) ease-in-out forwards;
-  }
-  
-  /* keyframes: fade in, drift, fade out */
-  @keyframes gust-move {
-    0%   { left: -200px; opacity: 0; }
-    10%  { opacity: 0.5; }
-    90%  { opacity: 0.5; }
-    100% { left: calc(100% + 200px); opacity: 0; }
-  }
-  
+}
 
-  /* Hide the typewriter text until #projects is in view */
+/* keyframes: fade in, drift, fade out */
+@keyframes gust-move {
+    0% {
+        left: -200px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        left: calc(100% + 200px);
+        opacity: 0;
+    }
+}
+
+
+/* Hide the typewriter text until #projects is in view */
 #projects .typewriter {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 /* When body has this class, fade the typewriter in */
 .show-typewriter #projects .typewriter {
-  opacity: 1;
+    opacity: 1;
 }
