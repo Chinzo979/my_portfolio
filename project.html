@@ -7,39 +7,76 @@
         <title>Project Details</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="project.css" />
+        <link rel="stylesheet" href="mobile-project.css" />
     </head>
 
     <body>
-        <!-- Main Navigation: Project Name + All Projects Link -->
-        <nav class="nav-links">
+        <!-- Desktop Navigation: Project Name + All Projects Link -->
+        <nav class="nav-links" id="desktop-nav">
             <h1 id="project-title"></h1>
             <a href="index.html#projects">All Projects</a>
         </nav>
 
-        <main class="project-detail">
-            <!-- 1) Sidebar nav -->
-            <aside class="sidebar">
-                <a href="index.html">
-                    <img src="assets/home.png" alt="Home" class="home-icon" />
-                </a>
-                <ul>
-                    <li><a href="#intro">Introduction</a></li>
-                    <li><a href="#design">Design</a></li>
-                    <li><a href="#implementation">Implementation</a></li>
-                    <li><a href="#results">Results</a></li>
-                    <li><a href="#future">Future Work</a></li>
-                </ul>
-                <div class="theme-picker">
-                    <img id="theme-green" src="assets/green.png" alt="Green Theme" />
-                    <img id="theme-autumn" src="assets/autumn.png" alt="Autumn Theme" />
-                    <img id="theme-snow" src="assets/snowflake.png" alt="Winter Theme" />
+        <!-- Mobile Navigation -->
+        <nav id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                    <div class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </aside>
+                <div class="mobile-theme-picker-nav">
+                    <img id="mobile-theme-green-nav" src="assets/green.png" alt="Green Theme" />
+                    <img id="mobile-theme-autumn-nav" src="assets/autumn.png" alt="Autumn Theme" />
+                    <img id="mobile-theme-snow-nav" src="assets/snowflake.png" alt="Winter Theme" />
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="index.html#projects" onclick="closeMobileMenu()">All Projects</a>
+                <a href="#intro" onclick="closeMobileMenu()">Introduction</a>
+                <a href="#design" onclick="closeMobileMenu()">Design</a>
+                <a href="#implementation" onclick="closeMobileMenu()">Implementation</a>
+                <a href="#results" onclick="closeMobileMenu()">Results</a>
+                <a href="#future" onclick="closeMobileMenu()">Future Work</a>
+            </div>
+        </nav>
 
-            <!-- 2) Main content (injected dynamically) -->
-            <article class="content" id="content">
-                <p>Loading…</p>
-            </article>
+        <main class="project-detail">
+            <!-- Desktop Layout: Sidebar + Content -->
+            <div class="desktop-layout">
+                <!-- 1) Sidebar nav -->
+                <aside class="sidebar">
+                    <a href="index.html">
+                        <img src="assets/home.png" alt="Home" class="home-icon" />
+                    </a>
+                    <ul>
+                        <li><a href="#intro">Introduction</a></li>
+                        <li><a href="#design">Design</a></li>
+                        <li><a href="#implementation">Implementation</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#future">Future Work</a></li>
+                    </ul>
+                    <div class="theme-picker">
+                        <img id="theme-green" src="assets/green.png" alt="Green Theme" />
+                        <img id="theme-autumn" src="assets/autumn.png" alt="Autumn Theme" />
+                        <img id="theme-snow" src="assets/snowflake.png" alt="Winter Theme" />
+                    </div>
+                </aside>
+
+                <!-- 2) Main content (injected dynamically) -->
+                <article class="content" id="content">
+                    <p>Loading…</p>
+                </article>
+            </div>
+
+            <!-- Mobile Layout: Full-width content -->
+            <div class="mobile-layout">
+                <article class="mobile-content" id="mobile-content">
+                    <p>Loading…</p>
+                </article>
+            </div>
         </main>
 
         <script src="project.js"></script>
