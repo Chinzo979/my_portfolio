@@ -414,11 +414,19 @@ body.theme-autumn #mobile-nav {
     background-color: #e57c23;
 }
 
+body.theme-autumn .mobile-menu {
+    background-color: #e57c23;
+}
+
 body.theme-autumn .mobile-content h2 {
     border-bottom-color: #e57c23;
 }
 
 body.theme-snow #mobile-nav {
+    background-color: #88cffa;
+}
+
+body.theme-snow .mobile-menu {
     background-color: #88cffa;
 }
 

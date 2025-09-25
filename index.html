@@ -2,143 +2,197 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Portfolio</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="mediaqueries.css" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chinmay Purushottam - Portfolio</title>
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
+        <!-- Desktop Navigation -->
         <nav id="desktop-nav">
-            <div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="nav-links">
+                <a href="#profile">About</a>
+                <a href="#projects">Projects</a>
             </div>
         </nav>
-        <nav id="hamburger-nav">
-            <div class="logo">Chinmay Purushottam</div>
-            <div class="hamburger-menu">
-                <div class="hamburger-icon" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="menu-links">
-                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-                </div>
-            </div>
-        </nav>
-        <section id="profile">
-            <div class="section__pic-container flip-card">
-                <div class="flip-card-inner">
-                    <!-- front face: your current profile pic -->
-                    <div class="flip-card-front">
-                        <img src="./assets/profile-pic.png" alt="Chinmay Purushottam profile picture" />
-                    </div>
-                    <!-- back face: fun fact or quote -->
-                    <div class="flip-card-back">
-                        <p>“Fun fact: I can solve a Rubik’s cube in under 30 seconds!”</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="section__text">
-                <p class="section__text__p1">Hello, I'm</p>
-                <h1 class="title">Chinmay Purushottam</h1>
-                <p class="section__text__p2">An aspiring software engineer interested in AI/ML and full-stack product
-                    development. When I'm not writing code, you'll find me playing any racket sport, endlessly scrolling
-                    through interior design pages, vibing to house and Hindi Indie music, and binging animes.</p>
-                <div class="btn-container">
-                    <button class="btn btn-color-2" onclick="window.open('./assets/Chinmay_FT.pdf')">
-                        Download CV
-                    </button>
-                    <button class="btn btn-color-1" onclick="location.href='./#contact'">
-                        Contact Info
-                    </button>
+        <!-- Mobile Navigation -->
+        <nav id="mobile-nav">
+            <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div id="socials-container">
+            </div>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="#mobile-text" onclick="closeMobileMenu()">About</a>
+                <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Profile Section -->
+            <section id="profile" class="profile-section">
+                <!-- Desktop Layout: Profile pic + text side by side -->
+                <div class="desktop-layout">
+                    <div class="profile-pic-container">
+                        <div class="flip-card" onclick="flipCard(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="./assets/profile-pic.png" alt="Chinmay Purushottam profile picture">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>"Fun fact: I can solve a Rubik's cube in under 30 seconds!"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-text">
+                        <p class="greeting">Hello, I'm</p>
+                        <h1 class="name">Chinmay Purushottam</h1>
+                        <p class="description">An aspiring software engineer interested in AI/ML and full-stack product
+                            development. When I'm not writing code, you'll find me playing any racket sport, endlessly
+                            scrolling through interior design pages, vibing to house and Hindi Indie music, and binging
+                            animes.</p>
+                        <div class="btn-container">
+                            <button class="btn btn-outline" onclick="window.open('./assets/Chinmay_FT.pdf')">
+                                Download CV
+                            </button>
+                            <button class="btn btn-filled" onclick="window.open('mailto:chinmay2321@gmail.com')">
+                                Contact Me
+                            </button>
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://github.com/Chinzo979" class="fa fa-github" aria-label="GitHub"></a>
+                            <a href="https://www.linkedin.com/in/chinmay-purushottam/" class="fa fa-linkedin"
+                                aria-label="LinkedIn"></a>
+                            <a href="https://instagram.com/chinmaynot" class="fa fa-instagram"
+                                aria-label="Instagram"></a>
+                            <a href="https://open.spotify.com/user/8lmcsig30eiaht67ptuijrwo4?si=f04c289fa6ac4f9b"
+                                class="fa fa-spotify" aria-label="Spotify"></a>
+                        </div>
+                    </div>
+                    <div class="desktop-scroll-indicator">
+                        <img src="./assets/arrow.png" alt="Scroll down" class="arrow-icon"
+                            onclick="location.href='./index_new.html#projects'">
+                    </div>
+                </div>
+
+                <!-- Mobile Layout: Profile pic only on first page -->
+                <div class="mobile-layout">
+                    <div class="mobile-profile-pic">
+                        <div class="flip-card" onclick="flipCard(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="./assets/profile-pic.png" alt="Chinmay Purushottam profile picture">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>"Fun fact: I can solve a Rubik's cube in under 30 seconds!"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-tagline">
+                        <p>Discover more</p>
+                    </div>
+                    <div class="desktop-scroll-indicator">
+                        <img src="./assets/arrow.png" alt="Scroll down" class="arrow-icon"
+                            onclick="location.href='./#mobile-text'">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Text Section (separate page on mobile) -->
+            <section id="mobile-text" class="mobile-text-section">
+                <div class="mobile-text-content">
+                    <p class="greeting">Hello, I'm</p>
+                    <h1 class="name">Chinmay Purushottam</h1>
+                    <p class="description">An aspiring software engineer interested in AI/ML and full-stack product
+                        development. When I'm not writing code, you'll find me playing any racket sport, endlessly
+                        scrolling through interior design pages, vibing to house and Hindi Indie music, and binging
+                        animes.</p>
+                    <div class="btn-container">
+                        <button class="btn btn-outline" onclick="window.open('./assets/Chinmay_FT.pdf')">
+                            Download CV
+                        </button>
+                        <button class="btn btn-filled" onclick="window.open('mailto:chinmay2321@gmail.com')">
+                            Contact Me
+                        </button>
+                    </div>
                     <div class="social-icons">
                         <a href="https://github.com/Chinzo979" class="fa fa-github" aria-label="GitHub"></a>
                         <a href="https://www.linkedin.com/in/chinmay-purushottam/" class="fa fa-linkedin"
                             aria-label="LinkedIn"></a>
-                        <a href="mailto:chinmay2321@gmail.com" class="fa fa-envelope" aria-label="Email"></a>
                         <a href="https://instagram.com/chinmaynot" class="fa fa-instagram" aria-label="Instagram"></a>
                         <a href="https://open.spotify.com/user/8lmcsig30eiaht67ptuijrwo4?si=f04c289fa6ac4f9b"
                             class="fa fa-spotify" aria-label="Spotify"></a>
                     </div>
                 </div>
-            </div>
-            <img src="./assets/arrow.png" alt="Scroll down" class="icon arrow" onclick="location.href='./#projects'" />
-        </section>
-        <section id="projects">
-            <div id="wind-container"></div>
-            <div id="leaf-container"></div>
-            <span class="typewriter">
-                <p class="section__text__p1">Browse My Recent</p>
-            </span>
-            <h1 class="title">Projects</h1>
-            <div class="experience-details-container">
-                <div class="about-containers">
-                    <div class="details-container color-container">
-                        <div class="project-item">
-                            <img src="./assets/project-1.png" alt="Project 1" class="project-img" />
-                        </div>
-                        <h2 class="experience-sub-title project-title">Machine Learning & Vision</h2>
-                        <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="projects-section">
+                <div id="wind-container"></div>
+                <div id="leaf-container"></div>
+                <div class="projects-content">
+                    <p class="section-subtitle">Browse My Recent</p>
+                    <h2 class="section-title">Projects</h2>
+                    <div class="projects-grid">
+                        <div class="project-card details-container color-container">
+                            <div class="project-item">
+                                <img src="./assets/project-1.png" alt="Project 1" class="project-img">
+                            </div>
+                            <h3 class="project-title">Machine Learning & Vision</h3>
+                            <button class="btn btn-outline project-btn"
                                 onclick="location.href='project.html?id=computer-vision'">
                                 Learn More...
                             </button>
                         </div>
-                    </div>
-                    <div class="details-container color-container">
-                        <div class="project-item">
-                            <img src="./assets/project-2.png" alt="Project 2" class="project-img" />
-                        </div>
-                        <h2 class="experience-sub-title project-title">Anime Recommender System</h2>
-                        <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+                        <div class="project-card details-container color-container">
+                            <div class="project-item">
+                                <img src="./assets/project-2.png" alt="Project 2" class="project-img">
+                            </div>
+                            <h3 class="project-title">Anime Recommender System</h3>
+                            <button class="btn btn-outline project-btn"
                                 onclick="location.href='project.html?id=anime-recommender'">
                                 Learn More...
                             </button>
                         </div>
-                    </div>
-                    <div class="details-container color-container">
-                        <div class="project-item">
-                            <img src="./assets/project-3.png" alt="Project 3" class="project-img" />
-                        </div>
-                        <h2 class="experience-sub-title project-title">Search Engine</h2>
-                        <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+                        <div class="project-card details-container color-container">
+                            <div class="project-item">
+                                <img src="./assets/project-3.png" alt="Project 3" class="project-img">
+                            </div>
+                            <h3 class="project-title">Search Engine</h3>
+                            <button class="btn btn-outline project-btn"
                                 onclick="location.href='project.html?id=search-engine'">
                                 Learn More...
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </main>
+
+        <!-- Footer with Creative Toggle -->
         <footer>
-            <div class="creative-switch-container">
+            <div class="creative-toggle">
                 <label class="switch">
                     <input type="checkbox" id="creativeToggle">
-                    <span class="slider round"></span>
+                    <span class="slider"></span>
                 </label>
-                <span class="switch-label">Get Creative</span>
+                <span class="toggle-label">Get Creative</span>
             </div>
         </footer>
-        <canvas id="cw"></canvas>
-        <canvas id="paintCanvas"></canvas>
+
+        <!-- Canvas for creative effects -->
+        <canvas id="creativeCanvas"></canvas>
+
         <script src="script.js"></script>
     </body>
 
