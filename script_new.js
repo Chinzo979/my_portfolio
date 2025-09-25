@@ -215,3 +215,76 @@ window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+const leafContainer = document.getElementById('leaf-container');
+const windContainer = document.getElementById('wind-container');
+
+function spawnLeaf() {
+    if (!leafContainer) return;
+    const img = document.createElement('img');
+    img.src = './assets/leaf.png';
+    img.className = 'leaf';
+    const startTop = 10 + Math.random() * 80;
+    img.style.setProperty('--leaf-start-top', `${startTop}%`);
+    const rotStart = `${Math.random() * 360}deg`;
+    const rotEnd = `${Math.random() * 360 + 360}deg`;
+    const duration = `${Math.random() * 8 + 6}s`;
+    img.style.setProperty('--leaf-rotate-start', rotStart);
+    img.style.setProperty('--leaf-rotate-end', rotEnd);
+    img.style.setProperty('--leaf-duration', duration);
+    leafContainer.appendChild(img);
+    img.addEventListener('animationend', () => img.remove());
+}
+
+function spawnGust() {
+    if (!windContainer) return;
+    const gust = document.createElement('div');
+    gust.className = 'wind-gust';
+    const top = 5 + Math.random() * 90;
+    gust.style.setProperty('--gust-start-top', `${top}%`);
+    gust.style.setProperty('--gust-duration', `${4 + Math.random() * 4}s`);
+    windContainer.appendChild(gust);
+    gust.addEventListener('animationend', () => gust.remove());
+}
+
+let leafInterval = null;
+let gustInterval = null;
+
+function startWindAndLeaves() {
+    if (!leafInterval) leafInterval = setInterval(spawnLeaf, 1000);
+    if (!gustInterval) gustInterval = setInterval(spawnGust, 2500);
+}
+
+function stopWindAndLeaves() {
+    clearInterval(leafInterval);
+    clearInterval(gustInterval);
+    leafInterval = null;
+    gustInterval = null;
+}
+
+// Start leaves and wind when page loads (if creative mode is off)
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing code ...
+
+    // Start ambient leaves & wind if creative mode is OFF
+    if (!creativeToggle.checked) {
+        startWindAndLeaves();
+    }
+});
+
+// Stop/start based on creative toggle
+creativeToggle.addEventListener('change', () => {
+    if (creativeToggle.checked) {
+        stopWindAndLeaves();
+        enableCreativeMode();
+    } else {
+        disableCreativeMode();
+        startWindAndLeaves();
+    }
+});
+
+// Stop when page is hidden
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopWindAndLeaves();
+    else if (!creativeToggle.checked) startWindAndLeaves();
+});

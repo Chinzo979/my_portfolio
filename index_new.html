@@ -15,7 +15,7 @@
         <!-- Desktop Navigation -->
         <nav id="desktop-nav">
             <div class="nav-links">
-                <a href="#about">About</a>
+                <a href="#profile">About</a>
                 <a href="#projects">Projects</a>
             </div>
         </nav>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="mobile-menu" id="mobile-menu">
-                <a href="#about" onclick="closeMobileMenu()">About</a>
+                <a href="#mobile-text" onclick="closeMobileMenu()">About</a>
                 <a href="#projects" onclick="closeMobileMenu()">Projects</a>
             </div>
         </nav>
@@ -78,6 +78,10 @@
                                 class="fa fa-spotify" aria-label="Spotify"></a>
                         </div>
                     </div>
+                    <div class="desktop-scroll-indicator">
+                        <img src="./assets/arrow.png" alt="Scroll down" class="arrow-icon"
+                            onclick="location.href='./index_new.html#projects'">
+                    </div>
                 </div>
 
                 <!-- Mobile Layout: Profile pic only on first page -->
@@ -94,8 +98,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="scroll-indicator">
-                        <img src="./assets/arrow.png" alt="Scroll down" class="arrow-icon">
+                    <div class="mobile-tagline">
+                        <p>Discover more</p>
+                    </div>
+                    <div class="desktop-scroll-indicator">
+                        <img src="./assets/arrow.png" alt="Scroll down" class="arrow-icon"
+                            onclick="location.href='./index_new.html#mobile-text'">
                     </div>
                 </div>
             </section>
@@ -130,13 +138,15 @@
 
             <!-- Projects Section -->
             <section id="projects" class="projects-section">
+                <div id="wind-container"></div>
+                <div id="leaf-container"></div>
                 <div class="projects-content">
                     <p class="section-subtitle">Browse My Recent</p>
                     <h2 class="section-title">Projects</h2>
                     <div class="projects-grid">
-                        <div class="project-card">
-                            <div class="project-image">
-                                <img src="./assets/project-1.png" alt="Project 1">
+                        <div class="project-card details-container color-container">
+                            <div class="project-item">
+                                <img src="./assets/project-1.png" alt="Project 1" class="project-img">
                             </div>
                             <h3 class="project-title">Machine Learning & Vision</h3>
                             <button class="btn btn-outline project-btn"
@@ -144,9 +154,9 @@
                                 Learn More...
                             </button>
                         </div>
-                        <div class="project-card">
-                            <div class="project-image">
-                                <img src="./assets/project-2.png" alt="Project 2">
+                        <div class="project-card details-container color-container">
+                            <div class="project-item">
+                                <img src="./assets/project-2.png" alt="Project 2" class="project-img">
                             </div>
                             <h3 class="project-title">Anime Recommender System</h3>
                             <button class="btn btn-outline project-btn"
@@ -154,9 +164,9 @@
                                 Learn More...
                             </button>
                         </div>
-                        <div class="project-card">
-                            <div class="project-image">
-                                <img src="./assets/project-3.png" alt="Project 3">
+                        <div class="project-card details-container color-container">
+                            <div class="project-item">
+                                <img src="./assets/project-3.png" alt="Project 3" class="project-img">
                             </div>
                             <h3 class="project-title">Search Engine</h3>
                             <button class="btn btn-outline project-btn"

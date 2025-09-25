@@ -57,7 +57,7 @@ body {
     color: #333;
     text-decoration: none;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 400;
     position: relative;
     transition: color 0.3s ease;
 }
@@ -151,7 +151,7 @@ body {
     color: #333;
     text-decoration: none;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 400;
     border-bottom: 1px solid #f0f0f0;
     transition: background-color 0.3s ease;
 }
@@ -207,6 +207,17 @@ main {
 
 .mobile-profile-pic {
     margin-bottom: 2rem;
+}
+
+.mobile-tagline {
+    margin-top: 2rem;
+    opacity: 0.7;
+}
+
+.mobile-tagline p {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
 }
 
 .scroll-indicator {
@@ -341,7 +352,7 @@ main {
 .btn {
     padding: 0.8rem 2rem;
     border-radius: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -415,8 +426,8 @@ main {
 
 /* Projects Section */
 .projects-section {
-    padding: 4rem 2rem;
-    background-color: #f8f8f8;
+    padding: 1rem 1rem;
+    background-color: transparent;
 }
 
 .projects-content {
@@ -440,22 +451,44 @@ main {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 450px);
+    justify-content: center;
     gap: 2rem;
-    margin-top: 2rem;
+    perspective: 1000px;
 }
 
 .project-card {
-    background-color: white;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    z-index: 1;
+    background: white;
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 500px;
+    /* Make cards taller */
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    transform: translateY(-10px) rotateX(5deg) scale(1.03);
+    transform-origin: center bottom;
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 0 10px 3px rgba(159, 190, 143, 0.6),
+        0 0 20px 6px rgba(159, 190, 143, 0.4),
+        0 0 40px 12px rgba(159, 190, 143, 0.2);
+}
+
+
+.project-item {
+    width: 100%;
+    height: 300px;
+    /* Increased height for taller cards */
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .project-image {
@@ -470,6 +503,35 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        min-height: 400px;
+        /* Slightly shorter on mobile */
+    }
+
+    .project-item {
+        height: 250px;
+        /* Adjusted for mobile */
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        /* Reduced effect on mobile */
+    }
 }
 
 .project-title {
@@ -491,10 +553,14 @@ footer {
 }
 
 .creative-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
+    z-index: 1000;
+    user-select: none;
 }
 
 .switch {
@@ -652,5 +718,263 @@ input:checked + .slider:before {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+    }
+}
+
+/* Projects Section with Leaves and 3D Effects */
+#projects {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#wind-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#leaf-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Leaf Animation */
+.leaf {
+    position: absolute;
+    left: -50px;
+    top: var(--leaf-start-top);
+    width: 40px;
+    pointer-events: none;
+    opacity: 0.9;
+    transform: rotate(var(--leaf-rotate-start));
+    animation: blow var(--leaf-duration) linear forwards;
+}
+
+@keyframes blow {
+    to {
+        left: calc(100% + 50px);
+        transform: rotate(var(--leaf-rotate-end));
+    }
+}
+
+/* Wind Gust Animation */
+.wind-gust {
+    position: absolute;
+    top: var(--gust-start-top);
+    left: -200px;
+    width: 200px;
+    height: 2px;
+    background: rgba(108, 75, 31, 0.3);
+    filter: blur(1px);
+    animation: gust-move var(--gust-duration) ease-in-out forwards;
+}
+
+@keyframes gust-move {
+    0% {
+        left: -200px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        left: calc(100% + 200px);
+        opacity: 0;
+    }
+}
+
+.projects-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 3rem;
+}
+
+/* Grid layout - copied from original */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 450px);
+    justify-content: center;
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+/* Card container - copied from original */
+.project-card {
+    padding: 1.5rem;
+    flex: 1;
+    background: white;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(163, 163, 163);
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    z-index: 1;
+}
+
+/* Project item container - copied from original */
+.project-item {
+    width: 100%;
+    height: 425px;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Project image - copied from original */
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Project title - copied from original */
+.project-title {
+    margin: 1rem;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* Project button - copied from original */
+.project-btn {
+    z-index: 3;
+    width: 70%;
+    position: relative;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    background: none;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-btn:hover {
+    background: rgba(159, 190, 143, 0.8);
+    color: white;
+}
+
+/* 3D hover effects - copied from original */
+.project-card:hover {
+    z-index: 2;
+    transform: translateY(-10px) rotateX(5deg) scale(1.03);
+    transform-origin: center bottom;
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 0 10px 3px rgba(159, 190, 143, 0.6),
+        0 0 20px 6px rgba(159, 190, 143, 0.4),
+        0 0 40px 12px rgba(159, 190, 143, 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        min-height: 350px;
+        /* Reduced from 400px */
+        padding: 1rem;
+        /* Reduced from 1.5rem */
+    }
+
+    .project-item {
+        height: 225px;
+        /* Reduced from 250px */
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+        /* Smaller title */
+        margin: 0.5rem;
+        /* Reduced margin */
+    }
+
+    .project-btn {
+        padding: 0.6rem 1rem;
+        /* Smaller button */
+        font-size: 0.8rem;
+        /* Smaller button text */
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+}
+
+/* Desktop scroll arrow */
+.desktop-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.desktop-scroll-indicator .arrow-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    transition: transform 0.3s ease;
+}
+
+.desktop-scroll-indicator .arrow-icon:hover {
+    transform: translateX(-50%) scale(1.2);
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
     }
 }
