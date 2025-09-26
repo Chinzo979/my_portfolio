@@ -1,63 +1,224 @@
-// script.js
+// Mobile Navigation Functions
+function toggleMobileMenu() {
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-// ─── NAVIGATION TOGGLE ───
-function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open");
-    icon.classList.toggle("open");
+    hamburgerIcon.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
 }
 
-// ─── FLIP CARD (coin-flip effect) ───
+function closeMobileMenu() {
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerIcon.classList.remove('active');
+    mobileMenu.classList.remove('active');
+}
+
+// Flip Card Function
 function flipCard(element) {
-    element.classList.toggle("flipped");
+    element.classList.toggle('flipped');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Card click to flip
-    const card = document.querySelector('.flip-card');
-    if (card) {
-        card.addEventListener('click', () => {
-            card.classList.toggle('flipped');
-        });
+// Creative Mode Toggle
+const creativeToggle = document.getElementById('creativeToggle');
+const canvas = document.getElementById('creativeCanvas');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+let animationId = null;
+let isCreativeMode = false;
+
+// Particle class for creative mode
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.vx = (Math.random() - 0.5) * 4;
+        this.vy = (Math.random() - 0.5) * 4;
+        this.life = 1.0;
+        this.decay = Math.random() * 0.02 + 0.005;
+        this.size = Math.random() * 4 + 2;
+        this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
     }
 
-    // Initialize canvas sizes for wind/leaves & creative modes
-    window.dispatchEvent(new Event('resize'));
-
-    // Start ambient leaves & wind if creative mode is OFF
-    if (!creativeToggle.checked) {
-        startWindAndLeaves();
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= this.decay;
+        this.vx *= 0.99;
+        this.vy *= 0.99;
     }
 
-    // ─── SECTION OBSERVER: Projects & URL hash + "Browse My Recent" visibility ───
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.target === projectsSection) {
-                    if (entry.isIntersecting) {
-                        // Show the "Browse My Recent" text
-                        document.body.classList.add('show-typewriter');
-                        // Set URL hash
-                        history.replaceState(null, '', '#projects');
-                    } else {
-                        // Hide the "Browse My Recent" text
-                        document.body.classList.remove('show-typewriter');
-                        // If we've scrolled above Projects, clear the hash
-                        if (window.scrollY < projectsSection.offsetTop) {
-                            history.replaceState(null, '', window.location.pathname);
-                        }
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-        observer.observe(projectsSection);
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.life;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+// Creative mode functions
+function enableCreativeMode() {
+    isCreativeMode = true;
+    canvas.style.display = 'block';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particles = [];
+    animate();
+}
+
+function disableCreativeMode() {
+    isCreativeMode = false;
+    canvas.style.display = 'none';
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+    }
+    particles = [];
+}
+
+function animate() {
+    if (!isCreativeMode) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update and draw particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+        const particle = particles[i];
+        particle.update();
+        particle.draw();
+
+        if (particle.life <= 0) {
+            particles.splice(i, 1);
+        }
+    }
+
+    animationId = requestAnimationFrame(animate);
+}
+
+// Mouse interaction for creative mode
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (isCreativeMode && Math.random() < 0.3) {
+        particles.push(new Particle(mouseX, mouseY));
     }
 });
 
-// ─── AMBIENT LEAVES ───
+document.addEventListener('click', (e) => {
+    if (isCreativeMode) {
+        for (let i = 0; i < 10; i++) {
+            particles.push(new Particle(e.clientX, e.clientY));
+        }
+    }
+});
+
+// Creative toggle event listener
+creativeToggle.addEventListener('change', () => {
+    if (creativeToggle.checked) {
+        enableCreativeMode();
+    } else {
+        disableCreativeMode();
+    }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+    // Add animation classes to elements
+    const animatedElements = document.querySelectorAll('.project-card, .profile-text, .mobile-text-content');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+
+    // Handle window resize for creative canvas
+    window.addEventListener('resize', () => {
+        if (isCreativeMode) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const mobileNav = document.getElementById('mobile-nav');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+
+        if (!mobileNav.contains(e.target) && document.getElementById('mobile-menu').classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    // Handle escape key to close mobile menu
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+});
+
+// Parallax effect for scroll indicator
+window.addEventListener('scroll', () => {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        scrollIndicator.style.transform = `translateY(${rate}px)`;
+    }
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
 const leafContainer = document.getElementById('leaf-container');
+const windContainer = document.getElementById('wind-container');
+
 function spawnLeaf() {
     if (!leafContainer) return;
     const img = document.createElement('img');
@@ -75,8 +236,6 @@ function spawnLeaf() {
     img.addEventListener('animationend', () => img.remove());
 }
 
-// ─── AMBIENT WIND GUSTS ───
-const windContainer = document.getElementById('wind-container');
 function spawnGust() {
     if (!windContainer) return;
     const gust = document.createElement('div');
@@ -90,10 +249,12 @@ function spawnGust() {
 
 let leafInterval = null;
 let gustInterval = null;
+
 function startWindAndLeaves() {
     if (!leafInterval) leafInterval = setInterval(spawnLeaf, 1000);
     if (!gustInterval) gustInterval = setInterval(spawnGust, 2500);
 }
+
 function stopWindAndLeaves() {
     clearInterval(leafInterval);
     clearInterval(gustInterval);
@@ -101,130 +262,29 @@ function stopWindAndLeaves() {
     gustInterval = null;
 }
 
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopWindAndLeaves();
-    else if (!creativeToggle.checked) startWindAndLeaves();
+// Start leaves and wind when page loads (if creative mode is off)
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing code ...
+
+    // Start ambient leaves & wind if creative mode is OFF
+    if (!creativeToggle.checked) {
+        startWindAndLeaves();
+    }
 });
 
-// ─── “Get Creative” PARTICLE + PAINT-BRUSH CURSOR ───
-const creativeToggle = document.getElementById('creativeToggle');
-const canvas = document.getElementById('cw');
-const paintCanvas = document.getElementById('paintCanvas');
-const ctx = canvas.getContext('2d');
-const pCtx = paintCanvas.getContext('2d');
-
-let particles = [];
-let paintDots = [];
-let animId = null;
-
-// track mouse & painting state
-const cursor = { x: innerWidth / 2, y: innerHeight / 2 };
-let painting = false;
-
-window.addEventListener('mousemove', e => {
-    cursor.x = e.clientX;
-    cursor.y = e.clientY;
-    if (painting && creativeToggle.checked) stampDot(e.clientX, e.clientY);
-});
-window.addEventListener('mousedown', e => {
-    if (!creativeToggle.checked) return;
-    painting = true;
-    stampDot(e.clientX, e.clientY);
-});
-window.addEventListener('mouseup', () => painting = false);
-
-window.addEventListener('resize', () => {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-    paintCanvas.width = innerWidth;
-    paintCanvas.height = innerHeight;
-});
-
-// Particle class
-function Particle() {
-    this.x = cursor.x;
-    this.y = cursor.y;
-    this.theta = Math.random() * 2 * Math.PI;
-    this.radius = Math.random() * 150 + 30;
-    this.speed = 0.02;
-    this.width = 2 + Math.random() * 3;
-    this.color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
-    this.prevX = this.x;
-    this.prevY = this.y;
-}
-Particle.prototype.update = function () {
-    this.prevX = this.x; this.prevY = this.y;
-    this.theta += this.speed;
-    this.x = cursor.x + Math.cos(this.theta) * this.radius;
-    this.y = cursor.y + Math.sin(this.theta) * this.radius;
-    ctx.beginPath();
-    ctx.lineWidth = this.width;
-    ctx.strokeStyle = this.color;
-    ctx.moveTo(this.prevX, this.prevY);
-    ctx.lineTo(this.x, this.y);
-    ctx.stroke();
-};
-
-// Paint‐brush dots
-function getRandomColor() {
-    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
-}
-function stampDot(x, y) {
-    paintDots.push({ x, y, t: performance.now(), color: getRandomColor() });
-}
-
-// Main animation loop
-function animate() {
-    // Paint‐dots
-    pCtx.clearRect(0, 0, paintCanvas.width, paintCanvas.height);
-    const now = performance.now();
-    paintDots = paintDots.filter(d => now - d.t < 1000);
-    paintDots.forEach(d => {
-        const alpha = 1 - (now - d.t) / 1000;
-        pCtx.globalAlpha = alpha;
-        pCtx.beginPath();
-        pCtx.arc(d.x, d.y, 5, 0, Math.PI * 2);
-        pCtx.fillStyle = d.color;
-        pCtx.fill();
-    });
-    pCtx.globalAlpha = 1;
-
-    // Particle trails
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => p.update());
-
-    animId = requestAnimationFrame(animate);
-}
-
-// Enable / disable creative mode
-function enableCreative() {
-    canvas.style.display = 'block';
-    paintCanvas.style.display = 'block';
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-    paintCanvas.width = innerWidth;
-    paintCanvas.height = innerHeight;
-    particles = Array.from({ length: 20 }, () => new Particle());
-    animate();
-}
-
-function disableCreative() {
-    canvas.style.display = 'none';
-    paintCanvas.style.display = 'none';
-    cancelAnimationFrame(animId);
-    particles = [];
-    paintDots = [];
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    pCtx.clearRect(0, 0, paintCanvas.width, paintCanvas.height);
-}
-
-// Hook up the creative toggle
+// Stop/start based on creative toggle
 creativeToggle.addEventListener('change', () => {
     if (creativeToggle.checked) {
         stopWindAndLeaves();
-        enableCreative();
+        enableCreativeMode();
     } else {
-        disableCreative();
+        disableCreativeMode();
         startWindAndLeaves();
     }
+});
+
+// Stop when page is hidden
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopWindAndLeaves();
+    else if (!creativeToggle.checked) startWindAndLeaves();
 });

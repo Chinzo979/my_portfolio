@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
     const content = document.getElementById('content');
+    const mobileContent = document.getElementById('mobile-content');
     const titleEl = document.getElementById('project-title');
     const sideTitleEl = document.getElementById('sidebar-title');
     const nav = document.querySelector('.nav-links');
@@ -22,19 +23,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         titleEl.textContent = proj.title;
         if (sideTitleEl) sideTitleEl.textContent = proj.title;
 
-        // Inject content sections
-        content.innerHTML = `
+        // Inject content sections into both desktop and mobile layouts
+        const contentHTML = `
             <section id="intro">
                 <h2>Introduction</h2>
                 <p>${proj.intro}</p>
             </section>
             <section id="design">
                 <h2>Design & Architecture</h2>
-                <p>${proj.design.replace(/\n/g, '<br>')}</p>
+                <p>${proj.design.replace(/\n/g, ' ')}</p>
             </section>
             <section id="implementation">
                 <h2>Implementation</h2>
-                <p>${proj.implementation.replace(/\n/g, '<br>')}</p>
+                <p>${proj.implementation.replace(/\n/g, ' ')}</p>
             </section>
             <section id="results">
                 <h2>Results</h2>
@@ -44,7 +45,35 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <h2>Future Work</h2>
                 <p>${proj.future}</p>
             </section>
-    `;
+        `;
+
+        content.innerHTML = contentHTML;
+        if (mobileContent) {
+            // Create mobile-specific content structure
+            const mobileContentHTML = `
+                <section id="intro">
+                    <h2>Introduction</h2>
+                    <p>${proj.intro}</p>
+                </section>
+                <section id="design">
+                    <h2>Design & Architecture</h2>
+                    <p>${proj.design.replace(/\n/g, ' ')}</p>
+                </section>
+                <section id="implementation">
+                    <h2>Implementation</h2>
+                    <p>${proj.implementation.replace(/\n/g, ' ')}</p>
+                </section>
+                <section id="results">
+                    <h2>Results</h2>
+                    <p>${proj.results}</p>
+                </section>
+                <section id="future">
+                    <h2>Future Work</h2>
+                    <p>${proj.future}</p>
+                </section>
+            `;
+            mobileContent.innerHTML = mobileContentHTML;
+        }
 
         // Scroll-spy sidebar
         const links = document.querySelectorAll('.sidebar a[href^="#"]');
@@ -62,6 +91,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (err) {
         content.innerHTML = `<p style="color:red;">${err.message}</p>`;
+        if (mobileContent) {
+            mobileContent.innerHTML = `<p style="color:red;">${err.message}</p>`;
+        }
     }
 
     // Hide nav on scroll down, show on scroll up
@@ -76,10 +108,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         lastY = currentY;
     });
 
-    // Theme picker functionality
+    // Theme picker functionality (desktop and mobile)
     const greenBtn = document.getElementById('theme-green');
     const autumnBtn = document.getElementById('theme-autumn');
     const snowBtn = document.getElementById('theme-snow');
+
+    // Mobile theme picker removed from bottom - now only in navigation
+
+    const mobileGreenNavBtn = document.getElementById('mobile-theme-green-nav');
+    const mobileAutumnNavBtn = document.getElementById('mobile-theme-autumn-nav');
+    const mobileSnowNavBtn = document.getElementById('mobile-theme-snow-nav');
 
     function applyTheme(theme) {
         document.body.classList.remove('theme-green', 'theme-autumn', 'theme-snow');
@@ -111,4 +149,41 @@ document.addEventListener('DOMContentLoaded', async () => {
         applyTheme('theme-snow');
         spawnFalling('assets/snowflake.png', 50, { min: 2, max: 5 });
     });
+
+    // Mobile theme picker removed from bottom - now only in navigation
+
+    // Mobile navigation theme picker event listeners
+    if (mobileGreenNavBtn) {
+        mobileGreenNavBtn.addEventListener('click', () => {
+            applyTheme('theme-green');
+            spawnFalling('assets/green.png', 20, { min: 5, max: 10 });
+        });
+    }
+    if (mobileAutumnNavBtn) {
+        mobileAutumnNavBtn.addEventListener('click', () => {
+            applyTheme('theme-autumn');
+            spawnFalling('assets/autumn.png', 20, { min: 5, max: 10 });
+        });
+    }
+    if (mobileSnowNavBtn) {
+        mobileSnowNavBtn.addEventListener('click', () => {
+            applyTheme('theme-snow');
+            spawnFalling('assets/snowflake.png', 50, { min: 2, max: 5 });
+        });
+    }
 });
+
+// Mobile navigation functions
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+    }
+}
+
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.style.display = 'none';
+    }
+}
