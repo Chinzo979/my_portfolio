@@ -4,7 +4,7 @@
     /* Control font sizes via these variables */
     --all-projects-font-size: 1rem;
     --all-projects-font-size: 1.1rem;
-    --project-title-font-size: 2.5rem;
+    --project-title-font-size: 2.3rem;
 }
 
 /* two-column layout */
@@ -16,7 +16,64 @@
 }
 
 .nav-links #project-title {
-    margin-left: 405px;
+    margin-left: 0;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    background-color: #9fbe8f;
+    color: white;
+    padding: 1rem 2rem;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: calc(10rem + 200px);
+    /* Start after sidebar */
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    /* Match sidebar top padding */
+    box-sizing: border-box;
+}
+
+.nav-links #project-title {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Theme colors for navigation bar */
+body.theme-autumn .nav-links {
+    background-color: #e57c23;
+}
+
+body.theme-snow .nav-links {
+    background-color: #88cffa;
+}
+
+.content {
+    flex: 1;
+    margin-left: 300px;
+    margin-top: 60px;
+    /* Add space for the nav bar */
+    padding-top: 1rem;
+    /* Extra breathing room */
+}
+
+/* Ensure the main container also accounts for nav bar */
+.project-detail {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 5rem;
+    box-sizing: border-box;
+    margin-top: calc(60px + 1rem);
+    /* Nav bar height + original margin */
 }
 
 /* fixed sidebar (stationary on scroll), full pamphlet style */
