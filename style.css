@@ -297,6 +297,17 @@ main {
     transform: rotateY(180deg);
 }
 
+.flip-card:hover .flip-card-inner {
+    border: 4px solid #9fbe8f;
+    box-shadow:
+        /* inner glow */
+        0 0 15px 8px rgba(159, 190, 143, 0.6),
+        /* mid glow */
+        0 0 30px 16px rgba(159, 190, 143, 0.4),
+        /* outer glow */
+        0 0 60px 32px rgba(159, 190, 143, 0.2);
+}
+
 .flip-card-back p {
     font-size: 1.1rem;
     padding: 1rem;
@@ -659,6 +670,8 @@ input:checked + .slider:before {
     .flip-card {
         width: 300px;
         height: 300px;
+        box-shadow: 0 0 80px rgba(159, 190, 143, 0.6), 0 0 80px rgba(159, 190, 143, 0.4);
+        border-radius: 100%;
     }
 
     /* Adjust text sizes for mobile */
@@ -708,6 +721,14 @@ input:checked + .slider:before {
     .flip-card {
         width: 250px;
         height: 250px;
+    }
+
+    .flip-card {
+        width: 250px;
+        height: 250px;
+        /* Add permanent circular glow for small mobile */
+        box-shadow: 0 0 15px rgba(159, 190, 143, 0.6), 0 0 30px rgba(159, 190, 143, 0.4);
+        border-radius: 50%;
     }
 
     .name {
