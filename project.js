@@ -51,23 +51,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (mobileContent) {
             // Create mobile-specific content structure
             const mobileContentHTML = `
-                <section id="intro">
+                <section id="intro-mobile">
                     <h2>Introduction</h2>
                     <p>${proj.intro}</p>
                 </section>
-                <section id="design">
+                <section id="design-mobile">
                     <h2>Design & Architecture</h2>
                     <p>${proj.design.replace(/\n/g, ' ')}</p>
                 </section>
-                <section id="implementation">
+                <section id="implementation-mobile">
                     <h2>Implementation</h2>
                     <p>${proj.implementation.replace(/\n/g, ' ')}</p>
                 </section>
-                <section id="results">
+                <section id="results-mobile">
                     <h2>Results</h2>
                     <p>${proj.results}</p>
                 </section>
-                <section id="future">
+                <section id="future-mobile">
                     <h2>Future Work</h2>
                     <p>${proj.future}</p>
                 </section>
